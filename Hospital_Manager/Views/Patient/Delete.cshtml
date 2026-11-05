@@ -1,0 +1,36 @@
+﻿@model Hospital_Manager.ViewModels.Patient.PatientDeleteViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Изтриване на пациент</h1>
+
+<h3>Сигурни ли сте, че искате да изтриете този пациент?</h3>
+<div>
+    <h4>Пациент</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Име</dt>
+        <dd class="col-sm-10">@Model.FirstName</dd>
+
+        <dt class="col-sm-2">Фамилия</dt>
+        <dd class="col-sm-10">@Model.LastName</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit"
+               value="Delete"
+               class="btn btn-danger" />
+        |
+        <a asp-action="Index">
+            Back to List
+        </a>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
