@@ -27,7 +27,7 @@
                placeholder="Search by name..."/>
     </div>
     <div class="col-md-3">
-        <label class="form-label">Minimul beds</label>
+        <label class="form-label">Minimum beds</label>
         
         <input type="number"
                name="minbeds" 
@@ -36,13 +36,13 @@
                min="0" />
     </div>
     <div class="col-md-3">
-        <label class="form-label">Sort by</label> 
-          <select name="sortord"  class="form-control"> 
-            <option value= "name"
-                selected="@ViewBag.SortOrder =="beds_asc">
-                Beds Ascending
-                </option>
-         </select>
+        <label class="form-label">Sort by</label>
+        <select name="sortord" class="form-control">
+            <option value="name" selected="@(ViewBag.SortOrder == "name")">Name A-Z</option>
+            <option value="beds_asc" selected="@(ViewBag.SortOrder == "beds_asc")">minbeds asc </option>
+            <option value="beds_desc" selected="@(ViewBag.SortOrder == "beds_desc")">minbeds desc</option>
+        </select>
+        <button type="submit">Search</button>
     </div>
 
 </form>
