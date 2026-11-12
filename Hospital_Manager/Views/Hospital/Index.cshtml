@@ -39,10 +39,12 @@
         <label class="form-label">Sort by</label>
         <select name="sortord" class="form-control">
             <option value="name" selected="@(ViewBag.SortOrder == "name")">Name A-Z</option>
-            <option value="beds_asc" selected="@(ViewBag.SortOrder == "beds_asc")">minbeds asc </option>
-            <option value="beds_desc" selected="@(ViewBag.SortOrder == "beds_desc")">minbeds desc</option>
+            <option value="beds_asc" selected="@(ViewBag.SortOrder == "beds_asc")">beds asc </option>
+            <option value="beds_desc" selected="@(ViewBag.SortOrder == "beds_desc")">beds desc</option>
         </select>
-        <button type="submit">Search</button>
+        <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary">Search</button>
+        </div>
     </div>
 
 </form>
