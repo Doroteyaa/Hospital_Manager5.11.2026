@@ -13,6 +13,13 @@ namespace Data_Hospital_Manager.Configurations
     {
         public void Configure(EntityTypeBuilder<Hospital> builder)
         {
+            builder.Property(x=>x.Name).IsRequired().HasMaxLength(256);
+            builder.Property(x=>x.Address).IsRequired();
+            builder.Property(x=>x.Email).IsRequired();
+            builder.Property(x=>x.BedsCount).IsRequired();
+            builder.Property(x=>x.PhoneNumber);
+     
+
             builder.HasData(
             new Hospital
             {
@@ -20,7 +27,7 @@ namespace Data_Hospital_Manager.Configurations
                 Name = "St. George University Hospital",
                 Address = "66 Peshtersko Shose Blvd, Plovdiv",
                 Email = "contact@stgeorgehospital.bg",
-                PhoneNumber = "35932602111",
+                PhoneNumber = "0932602111",
                 BedsCount = 1500,
                 CreatedOn = new DateTime(2026, 1, 15),
                 IsDeleted = false
@@ -31,7 +38,7 @@ namespace Data_Hospital_Manager.Configurations
                 Name = "Tokuda Hospital Sofia",
                 Address = "51B Nikola Vaptsarov Blvd, Sofia",
                 Email = "info@tokudahospital.bg",
-                PhoneNumber = "35924034000",
+                PhoneNumber = "0924034000",
                 BedsCount = 1000,
                 CreatedOn = new DateTime(2026, 2, 10),
                 IsDeleted = false
@@ -42,7 +49,7 @@ namespace Data_Hospital_Manager.Configurations
                 Name = "Dr. Hristo Stambolski Hospital",
                 Address = "56 Hristo Botev Blvd, Kazanlak",
                 Email = "office@mbal-kazanlak.bg",
-                PhoneNumber = "35943162200",
+                PhoneNumber = "0943162200",
                 BedsCount = 260,
                 CreatedOn = new DateTime(2026, 3, 5),
                 IsDeleted = false

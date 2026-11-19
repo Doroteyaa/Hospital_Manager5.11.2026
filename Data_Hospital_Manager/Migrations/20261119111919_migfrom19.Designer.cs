@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Hospital_Manager.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    [Migration("20261007061944_llas")]
-    partial class llas
+    [Migration("20261119111919_migfrom19")]
+    partial class migfrom19
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,16 +39,16 @@ namespace Data_Hospital_Manager.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("HospitalId")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -64,6 +64,38 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasIndex("HospitalId");
 
                     b.ToTable("Doctors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "ivan.petrov@stgeorgehospital.bg",
+                            FirstName = "Ivan",
+                            HospitalId = 1,
+                            LastName = "Petrov",
+                            PhoneNumber = "359888123456",
+                            Specialty = "Cardiology"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "elena.dimitrova@tokudahospital.bg",
+                            FirstName = "Elena",
+                            HospitalId = 2,
+                            LastName = "Dimitrova",
+                            PhoneNumber = "359889234567",
+                            Specialty = "Neurology"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "georgi.stoyanov@mbal-kazanlak.bg",
+                            FirstName = "Georgi",
+                            HospitalId = 3,
+                            LastName = "Stoyanov",
+                            PhoneNumber = "359887345678",
+                            Specialty = "Orthopedics"
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.DoctorPatient", b =>
@@ -79,6 +111,28 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasIndex("PatientId");
 
                     b.ToTable("DoctorPatients");
+
+                    b.HasData(
+                        new
+                        {
+                            DoctorId = 1,
+                            PatientId = 1
+                        },
+                        new
+                        {
+                            DoctorId = 1,
+                            PatientId = 2
+                        },
+                        new
+                        {
+                            DoctorId = 2,
+                            PatientId = 2
+                        },
+                        new
+                        {
+                            DoctorId = 3,
+                            PatientId = 3
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Hospital", b =>
@@ -108,8 +162,8 @@ namespace Data_Hospital_Manager.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -118,6 +172,41 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hospitals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "66 Peshtersko Shose Blvd, Plovdiv",
+                            BedsCount = 1500,
+                            CreatedOn = new DateTime(2026, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "contact@stgeorgehospital.bg",
+                            IsDeleted = false,
+                            Name = "St. George University Hospital",
+                            PhoneNumber = "0932602111"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "51B Nikola Vaptsarov Blvd, Sofia",
+                            BedsCount = 1000,
+                            CreatedOn = new DateTime(2026, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "info@tokudahospital.bg",
+                            IsDeleted = false,
+                            Name = "Tokuda Hospital Sofia",
+                            PhoneNumber = "0924034000"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "56 Hristo Botev Blvd, Kazanlak",
+                            BedsCount = 260,
+                            CreatedOn = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "office@mbal-kazanlak.bg",
+                            IsDeleted = false,
+                            Name = "Dr. Hristo Stambolski Hospital",
+                            PhoneNumber = "0943162200"
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Patient", b =>
@@ -134,13 +223,13 @@ namespace Data_Hospital_Manager.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -149,6 +238,32 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Patients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "maria.ivanova@gmail.com",
+                            FirstName = "Maria",
+                            LastName = "Ivanova",
+                            PhoneNumber = "+359887111222"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "nikolay.georgiev@abv.bg",
+                            FirstName = "Nikolay",
+                            LastName = "Georgiev",
+                            PhoneNumber = "+359888333444"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "petya.koleva@gmail.com",
+                            FirstName = "Petya",
+                            LastName = "Kolevа",
+                            PhoneNumber = "+359889555666"
+                        });
                 });
 
             modelBuilder.Entity("Data_Hospital_Manager.Entities.Doctor", b =>
@@ -156,7 +271,7 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasOne("Data_Hospital_Manager.Entities.Hospital", "Hospital")
                         .WithMany("Doctors")
                         .HasForeignKey("HospitalId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Hospital");

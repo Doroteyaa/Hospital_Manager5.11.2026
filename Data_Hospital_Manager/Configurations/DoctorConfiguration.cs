@@ -13,6 +13,12 @@ namespace Data_Hospital_Manager.Configurations
     {
         public void Configure(EntityTypeBuilder<Doctor> builder)
         {
+            builder.Property(x=>x.FirstName).IsRequired().HasMaxLength(50);
+            builder.Property(x=>x.LastName).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Email).IsRequired();
+            builder.Property(x => x.PhoneNumber).IsRequired();
+            builder.Property(x => x.Specialty).IsRequired();
+            builder.HasOne(d=>d.Hospital).WithMany(h=>h.Doctors).HasForeignKey(x=>x.HospitalId).OnDelete(DeleteBehavior.Restrict);
             builder.HasData(
             new Doctor
             {

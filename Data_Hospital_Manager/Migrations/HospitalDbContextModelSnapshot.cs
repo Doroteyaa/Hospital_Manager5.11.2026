@@ -36,16 +36,16 @@ namespace Data_Hospital_Manager.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("HospitalId")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -159,8 +159,8 @@ namespace Data_Hospital_Manager.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -180,7 +180,7 @@ namespace Data_Hospital_Manager.Migrations
                             Email = "contact@stgeorgehospital.bg",
                             IsDeleted = false,
                             Name = "St. George University Hospital",
-                            PhoneNumber = "35932602111"
+                            PhoneNumber = "0932602111"
                         },
                         new
                         {
@@ -191,7 +191,7 @@ namespace Data_Hospital_Manager.Migrations
                             Email = "info@tokudahospital.bg",
                             IsDeleted = false,
                             Name = "Tokuda Hospital Sofia",
-                            PhoneNumber = "35924034000"
+                            PhoneNumber = "0924034000"
                         },
                         new
                         {
@@ -202,7 +202,7 @@ namespace Data_Hospital_Manager.Migrations
                             Email = "office@mbal-kazanlak.bg",
                             IsDeleted = false,
                             Name = "Dr. Hristo Stambolski Hospital",
-                            PhoneNumber = "35943162200"
+                            PhoneNumber = "0943162200"
                         });
                 });
 
@@ -220,13 +220,13 @@ namespace Data_Hospital_Manager.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -268,7 +268,7 @@ namespace Data_Hospital_Manager.Migrations
                     b.HasOne("Data_Hospital_Manager.Entities.Hospital", "Hospital")
                         .WithMany("Doctors")
                         .HasForeignKey("HospitalId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Hospital");

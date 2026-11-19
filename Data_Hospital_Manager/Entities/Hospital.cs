@@ -23,7 +23,7 @@ namespace Data_Hospital_Manager.Entities
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+      
         [Phone]
         public string PhoneNumber { get; set; }
 

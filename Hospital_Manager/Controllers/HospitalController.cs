@@ -168,8 +168,16 @@ namespace Hospital_Manager.Controllers
         [ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-             await hs.DeleteHospitalAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await hs.DeleteHospitalAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidOperationException ex)
+            {
+                TempData["ErrorMessage"]=ex.Message;
+                return RedirectToAction(nameof(Index));
+            }
         }
     }
 }
