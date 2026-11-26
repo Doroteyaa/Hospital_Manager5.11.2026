@@ -36,7 +36,10 @@ namespace Data_Hospital_Manager.Entities
         public int HospitalId { get; set; } 
 
         public Hospital Hospital { get; set; }
+       
 
         public ICollection<DoctorPatient> DPatients { get; set; } = new List<DoctorPatient>();
+        public Guid? UserId { get; set; }
+        public User User { get; set; }
     }
 }
